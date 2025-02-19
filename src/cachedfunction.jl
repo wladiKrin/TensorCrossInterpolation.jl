@@ -174,7 +174,8 @@ end
 function _key(cf::CachedFunction{ValueType,K}, indexset::Vector{T})::K where {ValueType, T<:Number, K}
     result = zero(K)
     length(indexset) == length(cf.coeffs) || error("Invalid length of indexset")
-    @inbounds @fastmath for i in 1:length(indexset)
+    # @inbounds @fastmath for i in 1:length(indexset)
+    for i in 1:length(indexset)
         result += cf.coeffs[i] * (indexset[i] - 1)
     end
     return result

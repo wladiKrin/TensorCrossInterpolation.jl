@@ -47,8 +47,8 @@ function TensorCI2{ValueType}(
 ) where {F,ValueType,N}
     tci = TensorCI2{ValueType}(localdims)
     addglobalpivots!(tci, initialpivots)
-    tci.maxsamplevalue = maximum(abs, (func(x) for x in initialpivots))
-    abs(tci.maxsamplevalue) > 0.0 || error("maxsamplevalue is zero!")
+    # tci.maxsamplevalue = maximum(abs, func.(initialpivots))
+    # abs(tci.maxsamplevalue) > 0.0 || error("maxsamplevalue is zero!")
     invalidatesitetensors!(tci)
     return tci
 end
